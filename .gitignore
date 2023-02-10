@@ -1,0 +1,10 @@
+*.json
+*.model
+*.bin
+*.pkl
+*.txt
+*tfevent*
+*.yml
+*.yaml
+.idea/
+__pycache__/
