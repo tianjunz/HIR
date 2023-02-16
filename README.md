@@ -27,7 +27,7 @@ cd BIG-bench
 python setup.py sdist
 pip install -e .
 ```
-Modify ```BIG_BENCH_DIR``` in ```utils.py``` to be the path to this repo.
+Modify ```BIG_BENCH_DIR``` in ```utils.py``` to be the installation path of BigBench.
 ```
 # Install other dependencies
 conda env create -f conda_env.yml
