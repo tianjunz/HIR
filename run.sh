@@ -46,7 +46,7 @@ random_port=34515
 echo $TASK $TASK_DIR $NUM_SAMPLE $NUM_EPOCHS
 cp CoT.txt "$TASK".txt
 # rm "$TASK"_response.json;
-#torchrun --nproc_per_node 1 --master_port $random_port evaluation.py --use_original_model --task $TASK --task_dir $TASK_DIR --use_cot --model_dir $TASK;
+torchrun --nproc_per_node 1 --master_port $random_port evaluation.py --use_original_model --task $TASK --task_dir $TASK_DIR --use_cot --model_dir $TASK;
 torchrun --nproc_per_node 1 --master_port $random_port online_sampler.py --use_original_model --task $TASK --task_dir $TASK_DIR --sample_size $NUM_SAMPLE --model_dir $TASK;
 python -m torch.distributed.launch --nproc_per_node 4 --master_port $random_port --use_env offline_trainer.py --per_device_train_batch_size 1 --per_device_eval_batch_size 1 --output_dir $TASK --use_original_model --task $TASK --task_dir $TASK_DIR --with_tracking --gradient_accumulation_steps 16 --checkpointing_steps last --num_train_epochs $NUM_EPOCHS;
 torchrun --nproc_per_node 1 evaluation.py --task $TASK --master_port $random_port --task_dir $TASK_DIR --use_cot --model_dir $TASK;
