@@ -41,3 +41,4 @@ Change ```TASK``` to be the desired BigBench Task (e.g. ```logical_deduction_fiv
 ```
 bash run.sh
 ```
+Please note: if running multiple experiments on one node, please assign different port numbers to different runs by changing ```random_port``` in ```run.sh```
